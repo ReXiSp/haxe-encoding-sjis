@@ -1,0 +1,25 @@
+-cp src
+-cp test
+-lib buddy
+-main Test
+
+--each
+
+-js out/test.js
+-lib hxnodejs
+-cmd echo "done for JS"
+
+#--next
+#
+#-cpp out/cpp
+#-cmd echo "done for C++"
+
+--next
+
+-neko out/Test.n
+-cmd echo "done for Neko"
+
+--next
+
+--interp
+-cmd echo "done for eval"
