@@ -1,3 +1,4 @@
+package text.encoding.internal;
 
 class Windows31JTable {
     static var w31j2uni: Map<Int, Int> = null;

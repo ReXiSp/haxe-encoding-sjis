@@ -1,7 +1,9 @@
 -cp src
 -cp test
 -lib buddy
+-lib extype:2.0.0-rc.5
 -main Test
+-D buddy-colors
 
 --each
 
