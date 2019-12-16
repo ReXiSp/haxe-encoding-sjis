@@ -1,0 +1,14 @@
+{
+    "name": "encoding-sjis",
+    "url": "https://github.com/DenkiYagi/haxe-encoding-sjis",
+    "license": "Apache",
+    "tags": ["haxe", "text", "encoding", "sjis", "ShiftJIS", "Shift-JIS"],
+    "description": "ShiftJIS encoder/decoder for Haxe",
+    "version": "1.0.0",
+    "classPath": "src/",
+    "releasenote": "Initial release",
+    "contributors": ["denkiyagi"],
+    "dependencies": {
+        "extype": "2.0.0-rc.5"
+    }
+}
