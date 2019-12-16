@@ -1,6 +1,6 @@
 package text.encoding.internal;
 
-class Windows31JTable {
+class SJISTable {
     static var w31j2uni: Map<Int, Int> = null;
     static var uni2w31j: Map<Int, Int> = null;
 

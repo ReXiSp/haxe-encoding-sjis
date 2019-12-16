@@ -5,11 +5,11 @@ import haxe.io.Bytes;
 import haxe.io.BytesBuffer;
 import haxe.ds.Either;
 import haxe.iterators.StringIteratorUnicode;
-import text.encoding.internal.Windows31JTable;
+import text.encoding.internal.SJISTable;
 
 class SJIS {
     public static function encode(string:String):Bytes {
-        final table = Windows31JTable.unicodeToWindows31j();
+        final table = SJISTable.unicodeToWindows31j();
 
         final buffer = new BytesBuffer();
         for (codepoint in new StringIteratorUnicode(string)) {
@@ -41,7 +41,7 @@ class SJIS {
                     builder.add(String.fromCharCode(codepoint.get()));
                     charbytes = new SJISCharBytes();
                 } else {
-                    return Left(new SJISDecodeError("Invalid", pos));
+                    return Left(new SJISDecodeError('Invalid codepoint: position=${pos}', pos));
                 }
             }
         }
@@ -49,12 +49,21 @@ class SJIS {
         return if (charbytes.isEmpty()) {
             Right(builder.toString());
         } else {
-            Left(new SJISDecodeError("Invalid", pos));
+            Left(new SJISDecodeError("Unclosed SJIS bytes", pos));
         }
     }
 }
 
-abstract SJISCharBytes(Null<Int>) {
+class SJISDecodeError extends Error {
+    public var position(default, null):Int;
+    
+    public function new(message:String, pos:Int) {
+        super();
+        this.message = message;
+        this.position = pos;
+    }
+}
+private abstract SJISCharBytes(Null<Int>) {
     public inline function new(?value:Int) {
         this = value;
     }
@@ -77,7 +86,7 @@ abstract SJISCharBytes(Null<Int>) {
         } else if (this <= 0x7F) {
             CodePoint.of(this);
         } else if (this > 0xFF) {
-            final cp = Windows31JTable.windows31jToUnicode().get(this);
+            final cp = SJISTable.windows31jToUnicode().get(this);
             (cp != null) ? CodePoint.of(cp) : CodePoint.invalid();
         } else {
             null;
@@ -85,7 +94,7 @@ abstract SJISCharBytes(Null<Int>) {
     }
 }
 
-abstract CodePoint(Int) {
+private abstract CodePoint(Int) {
     inline function new(value:Int) {
         this = value;
     }
@@ -104,15 +113,5 @@ abstract CodePoint(Int) {
 
     public inline static function invalid():CodePoint {
         return new CodePoint(-1);
-    }
-}
-
-class SJISDecodeError extends Error {
-    public var position(default, null):Int;
-    
-    public function new(message:String, pos:Int) {
-        super();
-        this.message = message;
-        this.position = pos;
     }
 }
