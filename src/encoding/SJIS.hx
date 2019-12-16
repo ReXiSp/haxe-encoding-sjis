@@ -1,11 +1,11 @@
-package text.encoding;
+package encoding;
 
 import extype.Error;
 import haxe.io.Bytes;
 import haxe.io.BytesBuffer;
 import haxe.ds.Either;
 import haxe.iterators.StringIteratorUnicode;
-import text.encoding.internal.*;
+import encoding.internal.*;
 
 class SJIS {
     public static function encode(string:String):Bytes {

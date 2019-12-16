@@ -23,11 +23,11 @@ class TableGenerator {
 
         final template = new haxe.Template(File.getContent("template/Table.hx.tpl"));
 
-        File.saveContent('src/text/encoding/internal/$sjisToUnicodeName.hx', template.execute({
+        File.saveContent('src/encoding/internal/$sjisToUnicodeName.hx', template.execute({
             name: sjisToUnicodeName,
             rules: sjisToUnicodeRules
         }));
-        File.saveContent('src/text/encoding/internal/$unicodeToSjisName.hx', template.execute({
+        File.saveContent('src/encoding/internal/$unicodeToSjisName.hx', template.execute({
             name: unicodeToSjisName,
             rules: unicodeToSjisRules
         }));

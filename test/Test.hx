@@ -1,4 +1,4 @@
-import text.encoding.SJIS;
+import encoding.SJIS;
 using buddy.Should;
 using haxe.ds.Either;
 
@@ -42,31 +42,6 @@ class Test extends buddy.SingleSuite {
                 decodeTest("./testdata/hiragana-sjis.txt", "ほげ\n");
             });
         });
-        // describe("Windows31J iterator", {
-        //     it("only ascii", {
-        //         var input = sys.io.File.getBytes("./testdata/ascii-sjis.txt");
-        //         var expected: Array<Int> = [
-        //             'h'.code, 'o'.code, 'g'.code, 'e'.code, '\n'.code
-        //         ];
-        //         var i: Int = 0;
-        //         for (codepoint in JpText.Windows31J.createIterator(input)) {
-        //             codepoint.should.equal(Either.Right(expected[i]));
-        //             i++;
-        //         }
-        //     });
-        //     it("mixed", {
-        //         var input = sys.io.File.getBytes("./testdata/mixed-sjis.txt");
-        //         var expected: Array<Int> = [
-        //             'h'.code, 'o'.code, 'g'.code, 'e'.code,
-        //             '「'.code, '」'.code,
-        //             'ョ'.code, '\n'.code];
-        //         var i: Int = 0;
-        //         for (codepoint in JpText.Windows31J.createIterator(input)) {
-        //             codepoint.should.equal(Either.Right(expected[i]));
-        //             i++;
-        //         }
-        //     });
-        // });
     }
 }
 

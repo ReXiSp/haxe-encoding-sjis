@@ -1,5 +1,5 @@
 // DO NOT EDIT!
-package text.encoding.internal;
+package encoding.internal;
 
 import extype.Maybe;
 import extype.map.IntMap;
