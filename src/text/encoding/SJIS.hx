@@ -5,20 +5,16 @@ import haxe.io.Bytes;
 import haxe.io.BytesBuffer;
 import haxe.ds.Either;
 import haxe.iterators.StringIteratorUnicode;
-import text.encoding.internal.SJISTable;
+import text.encoding.internal.*;
 
 class SJIS {
     public static function encode(string:String):Bytes {
-        final table = SJISTable.unicodeToWindows31j();
-
         final buffer = new BytesBuffer();
         for (codepoint in new StringIteratorUnicode(string)) {
-            final code = table.get(codepoint);
-            if (code == null) {
-                buffer.addByte("?".code);
-            } else if (code <= 0xff) {
-                buffer.addByte(code);
+            if (codepoint <= 0xff) {
+                buffer.addByte(codepoint);
             } else {
+                final code = UnicodeToSJISTable.get(codepoint).getOrElse("?".code);
                 // assume little endian
                 buffer.addByte((code >> 8) & 0xff);
                 buffer.addByte(code & 0xff);
@@ -86,8 +82,7 @@ private abstract SJISCharBytes(Null<Int>) {
         } else if (this <= 0x7F) {
             CodePoint.of(this);
         } else if (this > 0xFF) {
-            final cp = SJISTable.windows31jToUnicode().get(this);
-            (cp != null) ? CodePoint.of(cp) : CodePoint.invalid();
+            SJIStoUnicodeTable.get(this).map(x -> CodePoint.of(x)).getOrElse(CodePoint.invalid());
         } else {
             null;
         }
