@@ -1,11 +1,11 @@
 // DO NOT EDIT!
 package encoding.internal;
 
-import extype.Maybe;
+import extype.Nullable;
 import extype.map.IntMap;
 
 class ::name:: {
-    public static inline function get(code:Int):Maybe<Int> {
+    public static inline function get(code:Int):Nullable<Int> {
         return getTable().get(code);
     }
 

@@ -1,5 +1,6 @@
 package encoding;
 
+import haxe.Exception;
 import extype.Error;
 import haxe.io.Bytes;
 import haxe.io.BytesBuffer;
@@ -22,15 +23,15 @@ class SJIS {
         }
         return buffer.getBytes();
     }
-    
+
     public static function decode(bytes:Bytes):Either<SJISDecodeError, String> {
         final builder = new StringBuf();
-        
+
         var pos = 0;
         var charbytes = new SJISCharBytes();
         while (pos < bytes.length) {
             charbytes = charbytes.append(bytes.get(pos++));
-            
+
             final codepoint = charbytes.toCodePoint();
             if (codepoint != null) {
                 if (codepoint.isValid()) {
@@ -50,12 +51,11 @@ class SJIS {
     }
 }
 
-class SJISDecodeError extends Error {
+class SJISDecodeError extends Exception {
     public var position(default, null):Int;
-    
+
     public function new(message:String, pos:Int) {
-        super();
-        this.message = message;
+        super(message);
         this.position = pos;
     }
 }

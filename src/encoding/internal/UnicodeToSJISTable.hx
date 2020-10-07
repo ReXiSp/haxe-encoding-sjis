@@ -1,11 +1,11 @@
 // DO NOT EDIT!
 package encoding.internal;
 
-import extype.Maybe;
+import extype.Nullable;
 import extype.map.IntMap;
 
 class UnicodeToSJISTable {
-    public static inline function get(code:Int):Maybe<Int> {
+    public static inline function get(code:Int):Nullable<Int> {
         return getTable().get(code);
     }
 
@@ -7800,7 +7800,7 @@ class UnicodeToSJISTable {
             _table.set(0xFA2D, 0xFC49);
             _table.set(0x9E19, 0xFC4A);
             _table.set(0x9ED1, 0xFC4B);
-            
+
         }
         return _table;
     }

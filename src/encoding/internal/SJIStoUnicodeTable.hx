@@ -1,11 +1,11 @@
 // DO NOT EDIT!
 package encoding.internal;
 
-import extype.Maybe;
+import extype.Nullable;
 import extype.map.IntMap;
 
 class SJIStoUnicodeTable {
-    public static inline function get(code:Int):Maybe<Int> {
+    public static inline function get(code:Int):Nullable<Int> {
         return getTable().get(code);
     }
 
@@ -7800,7 +7800,7 @@ class SJIStoUnicodeTable {
             _table.set(0xFC49, 0xFA2D);
             _table.set(0xFC4A, 0x9E19);
             _table.set(0xFC4B, 0x9ED1);
-            
+
         }
         return _table;
     }

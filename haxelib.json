@@ -9,6 +9,6 @@
     "releasenote": "Initial release",
     "contributors": ["denkiyagi"],
     "dependencies": {
-        "extype": "2.0.0-rc.5"
+        "extype": ""
     }
 }
