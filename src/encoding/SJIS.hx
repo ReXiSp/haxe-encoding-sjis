@@ -1,7 +1,6 @@
 package encoding;
 
 import haxe.Exception;
-import extype.Error;
 import haxe.io.Bytes;
 import haxe.io.BytesBuffer;
 import haxe.ds.Either;
