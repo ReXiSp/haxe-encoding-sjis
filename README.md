@@ -2,6 +2,7 @@
 
 ## Requirement
 + Haxe 4.0+
++ Git
 
 ## Tested platforms
 * C++
