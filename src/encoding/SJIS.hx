@@ -80,7 +80,7 @@ private abstract SJISCharBytes(Null<Int>) {
             null;
         } else if (this <= 0x7F) {
             CodePoint.of(this);
-        } else if (this > 0xFF) {
+        } else if (this > 0xFF || (this >= 0xA1 && this <= 0xDF)) {
             SJIStoUnicodeTable.get(this).map(x -> CodePoint.of(x)).getOrElse(CodePoint.invalid());
         } else {
             null;
