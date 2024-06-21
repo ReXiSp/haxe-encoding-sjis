@@ -4,8 +4,7 @@
 + Haxe 4.0+
 
 ## Tested platforms
-* JavaScript
-* NekoVM
+* C++
 
 ## Install
 ```
