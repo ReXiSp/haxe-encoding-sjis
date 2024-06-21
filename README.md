@@ -8,7 +8,7 @@
 
 ## Install
 ```
-haxelib install encoding-sjis
+haxelib git encoding-sjis https://github.com/ReXiSp/haxe-encoding-sjis
 ```
 
 ## Usage
