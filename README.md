@@ -2,7 +2,7 @@
 
 ## Requirement
 + Haxe 4.0+
-+ Git
++ Git (*To install*)
 
 ## Tested platforms
 * C++
